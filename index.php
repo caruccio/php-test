@@ -8,12 +8,14 @@
 
 <p>
     <form method=get action=echo.php>
-        <input type=submit value="echo"/> <input type=text name="text"/>
+        <input type=submit value="Echo"/> <input type=text name="text" value="Some text here"/>
     </form>
 </p>
 
 <p>
-    <a href=fibonacci.php>fibonacci</a> <input type=text name=number>
+    <form method=get action=fibonacci.php>
+        <input type=submit value="Fibonacci"/> <input type=text name="value" value="5"/>
+    </form>
 </p>
 
 </body>
