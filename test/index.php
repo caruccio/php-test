@@ -3,6 +3,7 @@
     <title>Alo Docker</title>
 </head>
 <body>
+<h3>Inside /test</h3>
 
 <p>
     <a href=phpinfo.php>phpinfo</a>
