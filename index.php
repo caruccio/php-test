@@ -16,7 +16,7 @@
 
 <p>
     <form method=get action=env.php>
-        <input type=submit value="Env var"/> <input type=text name="text" value="Env var name"/>
+        <input type=submit value="Env var"/> <input type=text name="var" value="Env var name"/>
     </form>
 </p>
 
