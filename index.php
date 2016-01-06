@@ -15,6 +15,12 @@
 </p>
 
 <p>
+    <form method=get action=env.php>
+        <input type=submit value="Env var"/> <input type=text name="text" value="Env var name"/>
+    </form>
+</p>
+
+<p>
     <form method=get action=fibonacci.php>
         <input type=submit value="Fibonacci"/> <input type=text name="value" value="5"/>
     </form>
