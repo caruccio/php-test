@@ -1,3 +1,3 @@
 <?php
-echo 'Response from host: ' . gethostname();
+echo 'Response from host: ' . gethostname() . "\n";
 ?>
