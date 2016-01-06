@@ -11,6 +11,10 @@
 </p>
 
 <p>
+    <a href=host.php>hostname</a>
+</p>
+
+<p>
     <form method=get action=echo.php>
         <input type=submit value="Echo"/> <input type=text name="text" value="Some text here"/>
     </form>
