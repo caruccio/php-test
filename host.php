@@ -1,3 +1,3 @@
 <?php
-echo 'Response from host: ' . gethostname() . "\n";
+echo 'Response from host: ' . getenv('HOSTNAME') . "\n";
 ?>
