@@ -4,7 +4,7 @@
 </head>
 <body>
 
-<h1>Demo App</h1>
+
 
 <p>
     <a href=phpinfo.php>phpinfo</a>
