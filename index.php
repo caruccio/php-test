@@ -1,7 +1,3 @@
-<?php
-include 'host.php';
-exit(0)
-?>
 <html>
 <head>
     <title>Hello Docker</title>
