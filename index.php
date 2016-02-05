@@ -32,5 +32,8 @@
     </form>
 </p>
 
+<hr>
+Version: <a href="version.php"><?php include 'version.php'; ?></a>
+
 </body>
 </html>
