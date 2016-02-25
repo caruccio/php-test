@@ -32,6 +32,12 @@
     </form>
 </p>
 
+<p>
+    <form method=get action=log.php>
+        <input type=submit value="Logger"/> <input type=text name="lines" value="100"/>
+    </form>
+</p>
+
 <hr>
 Version: <a href="version.php"><?php include 'version.php'; ?></a>
 
