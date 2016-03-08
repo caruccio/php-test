@@ -15,7 +15,7 @@ $result = fib($value);
 $elapsedtime = microtime(true) - $starttime;
 
 if ($loop) {
-    header("Location: $_SERVER[REQUEST_URI]?$_SERVER[QUERY_STRING]");
+    header("Location: $_SERVER[REQUEST_URI]");
 }
 header("Content-Type: text/plain");
 
