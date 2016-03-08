@@ -8,7 +8,7 @@ function fib($n)
 }
 
 $value = $_GET["value"];
-$loop = array_key_exists("loop", $_GET));
+$loop = array_key_exists("loop", $_GET);
 
 $starttime = microtime(true);
 $result = fib($value);
