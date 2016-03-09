@@ -1,3 +1,12 @@
+<h3>Run sql</h3>
+<form method=post>
+    <label>
+        <input type=text name="text" value=""/> <input type=submit value="Run SQL"/>
+    </label>
+</form>
+
+
+<h3>Navigate</h3>
 <?php
 $dbhost = getenv('DATABASE_SERVICE_NAME') ?: "mysql";
 $dbuser = getenv('MYSQL_USER');
@@ -6,6 +15,12 @@ $dbpass = getenv('MYSQL_PASSWORD');
 $link = mysqli_connect($dbhost, $dbuser, $dbpass);
 
 // notice: no error handling for the sake of simplicity
+
+function run_sql($sql)
+{
+    $res = mysqli_query($link, $sql);
+    print_r(mysqli_fetch_all($res));
+}
 
 function list_databases($link)
 {
@@ -51,7 +66,7 @@ function ask_table($link, $db)
 {
     echo "Selecione a tabela ($db): ";
     $tables = list_tables($link, $db);
-    foreach ($tabless as $table) {
+    foreach ($tables as $table) {
         echo "<a href=\"?db=$db&table=$table\">$table</a> ";
     }
     echo "\n";
@@ -76,7 +91,14 @@ function dump_table($link, $db, $table)
 
 }
 
-if (! $_GET["db"])) {
+if ($_POST["sql"]) {
+    echo "SQL: $_POST[sql]<br>";
+    echo "Result:<br>";
+    run_sql($_POST["sql"]);
+    exit(0);
+}
+
+if ($_GET["db"]) {
     $db = $_GET["db"];
     mysqli_select_db($link, $db);
 } else {
@@ -86,7 +108,7 @@ if (! $_GET["db"])) {
 }
 
 
-if (!$_GET["table"]) {
+if ($_GET["table"]) {
     $table = $_GET["table"];
 } else {
     ask_table($link, $db);
