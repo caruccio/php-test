@@ -112,7 +112,7 @@ if ($db && $table) {
 
 <?php
 if ($_POST["sql"]) {
-    echo "<hr>"
+    echo "<hr>";
     echo "<pre>mysql&gt; $_POST[sql];\n";
     run_sql($link, $_POST["sql"]);
     echo "</pre>\n";
