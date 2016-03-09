@@ -91,11 +91,6 @@ if ($_GET["db"]) {
     ask_database($link);
 }
 
-if ($_POST["sql"]) {
-    echo "SQL: $_POST[sql]<br>";
-    echo "Result:<br>";
-    run_sql($link, $_POST["sql"]);
-}
 
 if ($_GET["table"]) {
     $table = $_GET["table"];
@@ -114,3 +109,12 @@ if ($db && $table) {
         <input type=text name="sql" value=""/> <input type=submit value="Run SQL"/>
     </label>
 </form>
+
+<?php
+if ($_POST["sql"]) {
+    echo "<hr>"
+    echo "<pre>mysql&gt; $_POST[sql];\n";
+    run_sql($link, $_POST["sql"]);
+    echo "</pre>\n";
+}
+?>
