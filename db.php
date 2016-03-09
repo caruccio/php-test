@@ -1,7 +1,7 @@
 <h3>Run sql</h3>
 <form method=post>
     <label>
-        <input type=text name="text" value=""/> <input type=submit value="Run SQL"/>
+        <input type=text name="sql" value=""/> <input type=submit value="Run SQL"/>
     </label>
 </form>
 
