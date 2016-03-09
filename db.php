@@ -7,6 +7,8 @@ $dbpass = getenv('MYSQL_PASSWORD');
 
 $link = mysqli_connect($dbhost, $dbuser, $dbpass);
 
+$style_selected = "style=\"background-color: blue; color: white;\"";
+
 // notice: no error handling for the sake of simplicity
 
 function run_sql($link, $sql)
@@ -36,12 +38,18 @@ function list_databases($link)
    return $databases;
 }
 
-function ask_database($link)
+function ask_database($link, $current=null)
 {
+    global $style_selected;
+
     echo "<p>Selecione a base: ";
     $databases = list_databases($link);
     foreach ($databases as $db) {
-        echo "<a href=\"?db=$db\">$db</a> ";
+        if ($current === $db) {
+            echo "<a href=\"?db=$db\" $style_selected>$db</a> ";
+        } else {
+            echo "<a href=\"?db=$db\">$db</a> ";
+        }
     }
     echo "</p>\n";
 }
@@ -59,12 +67,18 @@ function list_tables($link, $db)
    return $tables;
 }
 
-function ask_table($link, $db)
+function ask_table($link, $db, $current=null)
 {
+    global $style_selected;
+
     echo "<p>Selecione a tabela ($db): ";
     $tables = list_tables($link, $db);
     foreach ($tables as $table) {
-        echo "<a href=\"?db=$db&table=$table\">$table</a> ";
+        if ($current === $table) {
+            echo "<a href=\"?db=$db&table=$table\" $style_selected>$table</a> ";
+        } else {
+            echo "<a href=\"?db=$db&table=$table\">$table</a> ";
+        }
     }
     echo "</p>\n";
 }
@@ -96,18 +110,15 @@ function dump_table($link, $db, $table)
 
 }
 
-if ($_GET["db"]) {
-    $db = $_GET["db"];
+$db = $_GET["db"] ?: null;
+if ($db) {
     mysqli_select_db($link, $db);
 }
-ask_database($link);
+ask_database($link, $db);
 
-
-if ($_GET["table"]) {
-    $table = $_GET["table"];
-}
+$table = $_GET["table"] ?: null;
 if ($db) {
-    ask_table($link, $db);
+    ask_table($link, $db, $table);
 }
 
 if ($db && $table) {
