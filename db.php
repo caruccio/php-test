@@ -12,7 +12,11 @@ $link = mysqli_connect($dbhost, $dbuser, $dbpass);
 function run_sql($link, $sql)
 {
     $res = mysqli_query($link, $sql);
-    print_r(mysqli_fetch_all($res));
+    if (gettype($res) == "mysqli_result") {
+        print_r(mysqli_fetch_all($res));
+    } else {
+        print_r($res);
+    }
 }
 
 function list_databases($link)
