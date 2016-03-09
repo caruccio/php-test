@@ -105,9 +105,9 @@ if ($db && $table) {
 
 <h3>Run sql</h3>
 <form method=post>
-    <label>
-        <input type=text name="sql" value=""/> <input type=submit value="Run SQL"/>
-    </label>
+    <textarea rows="6" cols="80" name="sql"></textarea>
+    <br>
+    <input type=submit value="Run SQL"/>
 </form>
 
 <?php
