@@ -1,12 +1,5 @@
-<h3>Run sql</h3>
-<form method=post>
-    <label>
-        <input type=text name="sql" value=""/> <input type=submit value="Run SQL"/>
-    </label>
-</form>
+<h3>Select</h3>
 
-
-<h3>Navigate</h3>
 <?php
 $dbhost = getenv('DATABASE_SERVICE_NAME') ?: "mysql";
 $dbuser = getenv('MYSQL_USER');
@@ -16,7 +9,7 @@ $link = mysqli_connect($dbhost, $dbuser, $dbpass);
 
 // notice: no error handling for the sake of simplicity
 
-function run_sql($sql)
+function run_sql($link, $sql)
 {
     $res = mysqli_query($link, $sql);
     print_r(mysqli_fetch_all($res));
@@ -95,24 +88,29 @@ if ($_GET["db"]) {
     $db = $_GET["db"];
     mysqli_select_db($link, $db);
 } else {
-    $link = mysqli_connect($dbhost, $dbuser, $dbpass);
     ask_database($link);
-    exit(0);
 }
 
 if ($_POST["sql"]) {
     echo "SQL: $_POST[sql]<br>";
     echo "Result:<br>";
-    run_sql($_POST["sql"]);
-    exit(0);
+    run_sql($link, $_POST["sql"]);
 }
 
 if ($_GET["table"]) {
     $table = $_GET["table"];
-} else {
+} else if ($db) {
     ask_table($link, $db);
-    exit(0);
 }
 
-dump_table($link, $db, $table);
+if ($db && $table) {
+    dump_table($link, $db, $table);
+}
 ?>
+
+<h3>Run sql</h3>
+<form method=post>
+    <label>
+        <input type=text name="sql" value=""/> <input type=submit value="Run SQL"/>
+    </label>
+</form>
