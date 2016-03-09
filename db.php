@@ -91,13 +91,6 @@ function dump_table($link, $db, $table)
 
 }
 
-if ($_POST["sql"]) {
-    echo "SQL: $_POST[sql]<br>";
-    echo "Result:<br>";
-    run_sql($_POST["sql"]);
-    exit(0);
-}
-
 if ($_GET["db"]) {
     $db = $_GET["db"];
     mysqli_select_db($link, $db);
@@ -107,6 +100,12 @@ if ($_GET["db"]) {
     exit(0);
 }
 
+if ($_POST["sql"]) {
+    echo "SQL: $_POST[sql]<br>";
+    echo "Result:<br>";
+    run_sql($_POST["sql"]);
+    exit(0);
+}
 
 if ($_GET["table"]) {
     $table = $_GET["table"];
