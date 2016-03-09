@@ -38,12 +38,12 @@ function list_databases($link)
 
 function ask_database($link)
 {
-    echo "Selecione a base: ";
+    echo "<p>Selecione a base: ";
     $databases = list_databases($link);
     foreach ($databases as $db) {
         echo "<a href=\"?db=$db\">$db</a> ";
     }
-    echo "\n";
+    echo "</p>\n";
 }
 
 function list_tables($link, $db)
@@ -61,17 +61,17 @@ function list_tables($link, $db)
 
 function ask_table($link, $db)
 {
-    echo "Selecione a tabela ($db): ";
+    echo "<p>Selecione a tabela ($db): ";
     $tables = list_tables($link, $db);
     foreach ($tables as $table) {
         echo "<a href=\"?db=$db&table=$table\">$table</a> ";
     }
-    echo "\n";
+    echo "</p>\n";
 }
 
 function dump_table($link, $db, $table)
 {
-    echo "Conteúdo da tabela ($db.$table)<br>";
+    echo "<p>Conteúdo da tabela ($db.$table)<br>";
     $sql = "SELECT * from $table";
     $res = mysqli_query($link, $sql);
 
@@ -92,21 +92,21 @@ function dump_table($link, $db, $table)
         }
         echo "  <tr>\n";
     }
-    echo "</table>\n";
+    echo "</table></p>\n";
 
 }
 
 if ($_GET["db"]) {
     $db = $_GET["db"];
     mysqli_select_db($link, $db);
-} else {
-    ask_database($link);
 }
+ask_database($link);
 
 
 if ($_GET["table"]) {
     $table = $_GET["table"];
-} else if ($db) {
+}
+if ($db) {
     ask_table($link, $db);
 }
 
