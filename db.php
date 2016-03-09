@@ -1,5 +1,5 @@
 <?php
-$dbhost = "mysql"; //getenv('DATABASE_SERVICE_NAME');
+$dbhost = getenv('DATABASE_SERVICE_NAME') ?: "mysql";
 $dbuser = getenv('MYSQL_USER');
 $dbpass = getenv('MYSQL_PASSWORD');
 
@@ -76,7 +76,7 @@ function dump_table($link, $db, $table)
 
 }
 
-if (isset($_GET, "db")) {
+if (! $_GET["db"])) {
     $db = $_GET["db"];
     mysqli_select_db($link, $db);
 } else {
@@ -86,7 +86,7 @@ if (isset($_GET, "db")) {
 }
 
 
-if (isset($_GET, "table")) {
+if (!$_GET["table"]) {
     $table = $_GET["table"];
 } else {
     ask_table($link, $db);
