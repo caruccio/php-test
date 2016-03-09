@@ -78,12 +78,20 @@ function dump_table($link, $db, $table)
     //list field names
     $fields  = mysqli_fetch_fields($res);
 
-    echo "<table>\n";
-    echo "  <th>\n";
+    echo "<table border=1>\n";
+    echo "  <tr>\n";
     foreach ($fields as $field) {
         echo "    <td>$field->name ($field->type)</td>\n";
     }
-    echo "  </th>\n";
+    echo "  </tr>\n";
+
+    while ($row = mysqli_fetch_row($res)) {
+        echo "  <tr>\n";
+        foreach ($row as $col) {
+            echo "    <td>$col</td>\n";
+        }
+        echo "  <tr>\n";
+    }
     echo "</table>\n";
 
 }
