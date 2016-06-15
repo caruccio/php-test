@@ -8,7 +8,16 @@ function fib($n)
 }
 
 $value = $_GET["value"];
-$time = microtime(true);
-echo "Fibonacci($value) = " . fib($value);
-echo " in " . sprintf("%0.2f", (microtime(true) - $time)) . " secs\n";
+$loop = array_key_exists("loop", $_GET);
+
+$starttime = microtime(true);
+$result = fib($value);
+$elapsedtime = microtime(true) - $starttime;
+
+if ($loop) {
+    header("Location: $_SERVER[REQUEST_URI]");
+}
+header("Content-Type: text/plain");
+
+printf("Fibonacci(%s) = %s (%0.2fs)\n", $value, $result, $elapsedtime);
 ?>
