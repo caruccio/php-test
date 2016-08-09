@@ -1,2 +1,2 @@
-php_value session.save_handler memcached
+php_value session.save_handler memcache
 php_value session.save_path tcp://memcached:11211
