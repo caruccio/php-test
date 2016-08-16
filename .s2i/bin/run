@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Este script é executado pelo sistema para iniciar o container.
+# Você pode, por exemplo, baixar alguma dependencia dinâmica, ciar ou remover arquivos,
+# executar scripts para popular cache, etc... ou até mesmo implementar seu próprio "start".
+
+
+# A linha abaixo executa o script padrão do sistema.
+# Comente-o caso queira implentar seu "start" customizado.
+source ${STI_SCRIPTS_PATH}/run
+
+# Os scripts de start padrão podem ser encontrado dentro da própria imagem final,
+# no diretório ${STI_SCRIPTS_PATH} ou direto no github de cada imagem:
+# - PHP: 
