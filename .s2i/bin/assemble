@@ -3,12 +3,16 @@
 # Arquivo: .s2i/bin/assemble
 
 # Este script é executado pelo sistema para gerar a imagem do container.
-# Você pode customiar ou implementar seu próprio "build".
+# Você pode customizar ou implementar seu próprio "build".
 
 # A linha abaixo executa o script padrão do sistema.
 # Comente-o caso queira implentar seu "build" customizado.
 
 source ${STI_SCRIPTS_PATH}/assemble
+
+if [ -x test.sh ]; then
+    ./test.sh
+fi
 
 # Os scripts de build padrão podem ser encontrado dentro da própria imagem
 # final no diretório ${STI_SCRIPTS_PATH} ou direto no github oficial de cada imagem:
