@@ -6,4 +6,4 @@ if [ -d /tmp/artifacts/ ]; then
     mv -v /tmp/artifacts/* ./
     shopt -u dotglob
 fi
-source $STI_SOURC_PATH/assemble   ### executa o assemble original
+source ${STI_SCRIPTS_PATH}/assemble   ### executa o assemble original
