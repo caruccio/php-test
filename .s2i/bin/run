@@ -9,6 +9,8 @@
 # A linha abaixo executa o script padrão do sistema.
 # Comente-o caso queira implentar seu "start" customizado.
 
+date > started.php
+
 source ${STI_SCRIPTS_PATH}/run
 
 # Os scripts de start padrão podem ser encontrado dentro da própria imagem
