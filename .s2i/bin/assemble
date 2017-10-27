@@ -11,8 +11,8 @@ fi
 
 source ${STI_SCRIPTS_PATH}/assemble   ### executa o assemble original
 
-if [ -d conf.d ]; then
-    cp -v conf.d/*.template ../etc/conf.d || true
+if [ -e conf.d/99-mod-status.conf.template ]; then
+    envsubst < /opt/app-root/etc/conf.d/99-mod-status.conf.template > /opt/app-root/etc/conf.d/99-mod-status.conf
 fi
 
 if [ -x test.sh ]; then
