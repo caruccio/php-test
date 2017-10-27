@@ -9,11 +9,11 @@ if [ -d /tmp/artifacts/ ]; then
     shopt -u dotglob
 fi
 
+source ${STI_SCRIPTS_PATH}/assemble   ### executa o assemble original
+
 if [ -d conf.d ]; then
     cp -v conf.d/*.template ../etc/conf.d || true
 fi
-
-source ${STI_SCRIPTS_PATH}/assemble   ### executa o assemble original
 
 if [ -x test.sh ]; then
   ./test.sh
