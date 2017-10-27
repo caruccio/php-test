@@ -11,6 +11,10 @@
 
 date > started.php
 
+if [ -e conf.d/99-mod-status.conf.template ]; then
+    envsubst < conf.d/99-mod-status.conf.template > /opt/app-root/etc/conf.d/99-mod-status.conf
+fi
+
 source ${STI_SCRIPTS_PATH}/run
 
 # Os scripts de start padrão podem ser encontrado dentro da própria imagem
