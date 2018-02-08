@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+[ "$DEBUG" == "true" ] && set -x
 
 if [ -d /tmp/artifacts/ ]; then
     echo "---> Restoring build artifacts from /tmp/artifacts..."
